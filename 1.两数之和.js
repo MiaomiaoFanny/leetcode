@@ -1,0 +1,23 @@
+/*
+ * @lc app=leetcode.cn id=1 lang=javascript
+ *
+ * [1] 两数之和
+ */
+
+// @lc code=start
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+  const hashMap = {};
+  for(let i = 0; i < nums.length; i++) {
+    if (nums[i] in hashMap) {
+      return [hashMap[nums[i]], i];
+    }
+    hashMap[target - nums[i]] = i;
+  }
+};
+// @lc code=end
+
