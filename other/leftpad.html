@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>LeftPad</title>
+</head>
+<body>
+  <h1>LeftPad</h1>
+  <script>
+    function leftpad1(str, len, ch) {
+     let res = ''; 
+     let chLength = len - str.length;
+     res = Array(chLength+1).join(ch) + str;
+    //  console.log('[leftpad1] >', res, 'from', str, len, chLength);
+     return res;
+    }
+
+    // 想象成折纸过程
+    // 面积为双数就直接对折, ch翻倍记录层数
+    // 面积为单数就削掉一个单位面积再对折
+    // 每一次削减的面积就是当前的层数, 加到结果中去
+    // 最后一定会全部削完
+    function leftpad2(str, len, ch) {
+      let res = str;
+      let chLength = len - str.length; // 表示每一层的面积, 当前一层ch
+      // 一直对折, 遇到单数每层削减一个面积
+      while(chLength) {
+        if (chLength % 2 === 1) { // 面积为单数时
+          res = ch + res; // 削掉一个面积 直到最后全部削减完成
+        }
+        chLength = parseInt(chLength / 2); // 削减对折
+        ch += ch; // 层数翻倍 对折后的有几层就有几个ch 0 00 0000
+      }
+      // console.log('[leftpad2] >', res, 'from', str, len, chLength);
+      return res;
+    }
+    // 巧用位运算
+    function leftpad3(str, len, ch) {
+      let res = str;
+      let chLength = len - str.length;
+      while(chLength) {
+        if (chLength & 1) { // 与1求得是否被2整除
+          res = ch + res;
+        }
+        chLength = parseInt(chLength >>> 1); // 右移除2
+        ch = ch << 1; // 左移乘2
+      }
+      // console.log('[leftpad3] >', res, 'from', str, len, chLength);
+      return res;
+    }
+    // leftpad1('fanny', 10, '0');
+    // leftpad1('fanny', 5, '0');
+    // leftpad1('fanny', 6, '0');
+    // leftpad1('fanny', 7, '0');
+    // leftpad2('fanny', 10, '0');
+    // leftpad2('fanny', 5, '0');
+    // leftpad2('fanny', 6, '0');
+    // leftpad2('fanny', 7, '0');
+    // leftpad2('fanny', 20, '0');
+    // leftpad2('', 1, '0');
+    // leftpad3('fanny', 10, '0');
+    // leftpad3('fanny', 5, '0');
+    // leftpad3('fanny', 6, '0');
+    // leftpad3('fanny', 7, '0');
+    // leftpad3('fanny', 20, '0');
+    // leftpad3('', 1, '0');
+    // console.time('leftpad1');
+    // for(let i = 0; i <= 10000; i++) {
+    //   leftpad1('fanny', 10000, '0');
+    // }
+    // console.timeEnd('leftpad1');
+    console.time('leftpad2');
+    for(let i = 0; i <= 100000; i++) {
+      leftpad2('fanny', 100000, '0');
+    }
+    console.timeEnd('leftpad2');
+
+    console.time('leftpad3');
+    for(let i = 0; i <= 100000; i++) {
+      leftpad3('fanny', 100000, '0');
+    }
+    console.timeEnd('leftpad3');
+
+  </script>
+</body>
+</html>
