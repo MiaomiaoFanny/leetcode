@@ -1,14 +1,19 @@
 # 通过 leetcode 学习数据结构与算法
 
+> <https://github.com/labuladong/fucking-algorithm>
+
 ## 数据结构 data structure
 
-### 栈 stack 和 队列 queue
+> 数组(栈 队列) 链表 树 图 堆
+> 空间换时间 (哈希表)
+
+### 1 数组 (栈 stack 和 队列 queue)
 
 * 20.有效的括号.js
 * 509.斐波那契数.js
 * 71.简化路径.js
 
-### 链表 Linked list
+### 2 链表 Linked list
 
 * 封装链表类 node-link.js
 * 141.环形链表.js
@@ -16,7 +21,7 @@
 * 203.移除链表元素.js
 * 206.反转链表.js
 
-### 树 tree
+### 3 树 tree
 
 * 100.相同的树.js
 * 226.翻转二叉树.js
@@ -29,6 +34,8 @@
 * 236.二叉树的最近公共祖先.js
 
 ## 算法 algorithm
+
+> 排序 搜索 回溯 递归 贪心 动态规划dp
 
 ### 二分法 leftpad
 
@@ -43,3 +50,12 @@
 * 79.单词搜索.js
 * 51.n皇后.js
 * 37.解数独.js
+
+位运算
+
+#### 动态规划算法 DP (dynamic programing)
+
+* 120.三角形最小路径和.js
+* 322.零钱兑换.js
+* 72.编辑距离.js
+* 10.正则表达式匹配.js
